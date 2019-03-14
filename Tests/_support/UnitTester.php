@@ -1,5 +1,5 @@
 <?php
-
+namespace In2code\Powermail\Tests;
 
 /**
  * Inherited Methods
