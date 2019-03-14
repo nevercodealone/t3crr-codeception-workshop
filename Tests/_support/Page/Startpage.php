@@ -14,4 +14,6 @@ class Startpage
 
     public static $searchResultPageInputField = '#tx-solr-search-form-pi-results > input.search-page-form.input-field';
     public static $searchResultPageResultItemsHeadLines = 'h3.title';
+
+
 }
