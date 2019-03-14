@@ -13,3 +13,19 @@ settings:
 extensions:
   enabled:
     - Codeception\Extension\RunFailed
+modules:
+  config:
+    Db:
+      dsn: 'mysql:host=localhost;dbname=nca'
+      user: 'root'
+      password: 'root'
+    PhpBrowser:
+      url: 'http://127.0.0.1:8000'
+      clear_cookies: false
+      restart: false
+      curl:
+        CURLOPT_RETURNTRANSFER: true
+    REST:
+      url: 'http://127.0.0.1:8000'
+      depends: PhpBrowser
+      part: Json
