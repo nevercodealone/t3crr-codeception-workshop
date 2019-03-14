@@ -15,13 +15,7 @@ class MesssageCest
             'name' => 'Roland Golla ' . $time
         ];
 
-        $I->sendPOST(
-            '/api/messages',
-            json_encode($data)
-        );
-
-        $I->seeResponseIsJson();
-        $I->seeResponseCodeIs(200);
+        $I->postHandler('/api/messages', $data);
 
         $I->seeNumRecords(
             1,
@@ -37,12 +31,6 @@ class MesssageCest
             'message' => 'email|17624747727|Testify',
             'name' => 'Roland Golla ' . $time
         ];
-
-        $I->sendPOST(
-            '/api/message',
-            json_encode($data)
-        );
-
-        $I->seeResponseCodeIs(404);
+        $I->postHandler('/api/messages', $data, 400);
     }
 }

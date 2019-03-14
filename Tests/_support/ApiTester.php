@@ -22,7 +22,16 @@ class ApiTester extends \Codeception\Actor
 {
     use ApiTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    public function postHandler($route, array $data, $status = 200)
+    {
+        $I = $this;
+
+        $I->sendPOST(
+            $route,
+            json_encode($data)
+        );
+
+        $I->seeResponseIsJson();
+        $I->seeResponseCodeIs($status);
+    }
 }
