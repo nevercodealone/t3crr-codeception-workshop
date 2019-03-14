@@ -23,5 +23,18 @@ class SearchCest
         foreach ($listItems as $listItem) {
             $I->assertContains($searchString, strtolower($listItem));
         }
+
+        $I->scrollTo($page::$searchButton);
+        $I->click($page::$searchButton);
+        $I->waitForElement($page::$searchResultPageInputField);
+        $I->assertSame($searchString, $I->grabValueFrom($page::$searchResultPageInputField));
+
+        $I->canSeeInCurrentUrl('q=' . $searchString);
+
+        $headLines = $I->grabMultiple($page::$searchResultPageResultItemsHeadLines);
+        foreach ($headLines as $headLine) {
+            $I->assertContains($searchString, strtolower($headLine));
+        }
     }
+
 }

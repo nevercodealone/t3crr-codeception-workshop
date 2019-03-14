@@ -11,4 +11,7 @@ class Startpage
     public static $searchAutoCompletionList = '#tx-solr-search-main-form > div';
     public static $searchAutoCompletionListItems = '#tx-solr-search-main-form > div > div:nth-child(4) > div.autocomplete-suggestion';
     public static $searchAutoCompletionListFirstItem = '#tx-solr-search-main-form > div > div:nth-child(4) > div:nth-child(2)';
+
+    public static $searchResultPageInputField = '#tx-solr-search-form-pi-results > input.search-page-form.input-field';
+    public static $searchResultPageResultItemsHeadLines = 'h3.title';
 }
