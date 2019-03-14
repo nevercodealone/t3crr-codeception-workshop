@@ -8,6 +8,7 @@ class Category
 
     public static $loadingSpinner = '.spinnerOverlay';
     public static $counter = 'div.count';
+    public static $restButton = '.resetFilters';
 
     public static $filterFirst = '#farbtonMischen > span';
     public static $filterFirstCheckbox = '#farbtonMischen li:nth-child(1) .option-name:nth-child(1)';
