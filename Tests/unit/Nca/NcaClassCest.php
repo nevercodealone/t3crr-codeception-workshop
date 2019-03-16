@@ -1,40 +1,42 @@
 <?php
 namespace In2code\Powermail\Tests\Nca;
-use Codeception\Stub;
 use In2code\Powermail\Nca\NcaClass;
 use In2code\Powermail\Tests\UnitTester;
+
+use Mockery as m;
 
 class NcaClassCest
 {
     private $fixture;
+    private $email;
 
     public function _before(UnitTester $I)
     {
         $this->fixture = new NcaClass();
+        $this->email = 'rolandgolla@gmail.com';
     }
 
-    public function validateDataReturnTrueOnValidEmail(UnitTester $I)
+    public function validateEmailReturnFalseDependencyInjection(UnitTester $I)
     {
-        $data = [
-            'email' => 'rolandgolla@gmail.com'
-        ];
+        $generalUtility = m::mock('alias:\TYPO3\CMS\Core\Utility\GeneralUtility');
+        $generalUtility->shouldReceive([
+            'validEmail' => false
+        ]);
 
-        $I->assertTrue($this->fixture->validateData($data));
+        $fixture = new NcaClass();
+
+        $I->assertFalse($fixture->validateEmailDependencyInjection($generalUtility, $this->email));
     }
 
-    public function validateDataReturnFalseOnInValidEmail(UnitTester $I)
+    public function validateDataReturnFalseOnInValidEmailLegacy(UnitTester $I)
     {
-        $this->fixture = Stub::make(
-            $this->fixture,
-            [
-                'validateEmail' => false,
-            ]
-        );
+        $generalUtility = m::mock('alias:\TYPO3\CMS\Core\Utility\GeneralUtility');
+        $generalUtility->shouldReceive([
+            'validEmail' => false
+        ]);
 
-        $data = [
-            'email' => ''
-        ];
+        $fixture = new NcaClass();
 
-        $I->assertFalse($this->fixture->validateData($data));
+        $I->assertFalse($fixture->validateEmailLegacy($this->email));
     }
 }

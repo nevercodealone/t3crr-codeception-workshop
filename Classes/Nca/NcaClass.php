@@ -5,18 +5,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class NcaClass
 {
-    public function validateData(array $data)
+    public function validateEmailDependencyInjection(GeneralUtility $generalUtility, $email)
     {
-        $isEmail = $this->validateEmail($data['email']);
-
-        if(!$isEmail) {
-            return false;
-        }
-
-        return true;
+        return $generalUtility::validEmail($email);
     }
 
-    public function validateEmail($email)
+    public function validateEmailLegacy($email)
     {
         return GeneralUtility::validEmail($email);
     }
