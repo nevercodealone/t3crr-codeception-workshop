@@ -1,0 +1,31 @@
+namespace: In2code\Powermail\Tests\
+actor: Tester
+paths:
+  tests: Tests
+  log: Tests/_output
+  data: Tests/_data
+  support: Tests/_support
+  envs: Tests/_envs
+settings:
+  colors: true
+  memory_limit: 1024M
+  shuffle: true
+extensions:
+  enabled:
+    - Codeception\Extension\RunFailed
+modules:
+  config:
+    Db:
+      dsn: 'mysql:host=localhost;dbname=nca'
+      user: 'root'
+      password: 'root'
+    PhpBrowser:
+      url: 'http://127.0.0.1:8000'
+      clear_cookies: false
+      restart: false
+      curl:
+        CURLOPT_RETURNTRANSFER: true
+    REST:
+      url: 'http://127.0.0.1:8000'
+      depends: PhpBrowser
+      part: Json

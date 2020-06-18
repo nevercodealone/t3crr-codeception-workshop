@@ -1,0 +1,16 @@
+class_name: AcceptanceTester
+modules:
+  enabled:
+    - WebDriver
+    - Asserts
+  config:
+    WebDriver:
+      url: 'https://alpina-farben.de'
+      browser: chrome
+      window_size: 1600x1000
+env:
+  firefox:
+    modules:
+      config:
+        WebDriver:
+          browser: 'firefox'
