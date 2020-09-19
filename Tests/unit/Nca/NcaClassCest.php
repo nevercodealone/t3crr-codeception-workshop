@@ -4,6 +4,7 @@ use In2code\Powermail\Nca\NcaClass;
 use In2code\Powermail\Tests\UnitTester;
 
 use Mockery as m;
+use SebastianBergmann\PeekAndPoke\Proxy;
 
 class NcaClassCest
 {
@@ -38,5 +39,17 @@ class NcaClassCest
         $fixture = new NcaClass();
 
         $I->assertFalse($fixture->validateEmailLegacy($this->email));
+    }
+
+    public function defaultStatusIsFalse(UnitTester $I)
+    {
+        $I->assertFalse($this->fixture->getStatus());
+    }
+
+    public function setStatusToTrueReturnTrue(UnitTester $I)
+    {
+        $fixture = new Proxy($this->fixture);
+        $fixture->status = true;
+        $I->assertTrue($this->fixture->getStatus());
     }
 }
