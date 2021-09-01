@@ -24,7 +24,7 @@
     "typo3-ter/powermail": "self.version"
   },
   "require-dev": {
-    "codeception/codeception": "^2.5",
+    "codeception/codeception": "^3.1",
     "mockery/mockery": "^1.2",
     "sebastian/peek-and-poke": "1.0.*"
   },
